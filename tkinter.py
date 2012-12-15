@@ -16,12 +16,12 @@ class Dashboard():
         y = (hs/2) - (breadth/2)
         self.window.geometry('%dx%d+%d+%d' % (length, breadth, x, y))
         
-        # To show the main window with checkbox , buttons etc.
+        # To show the main window with widget like checkbox, buttons etc.
     def Display(self, choice = True):
         self.window.mainloop()
         return
 
-#Adding Button , checkbox , textarea , radiobutton as a widget which depends on passing argument
+#Adding Button,Checkbox,textarea,radiobutton etc. as a widget which depends on passing argument
     def Add(self,widget):
         name = widget.name
         if(name == "button"):
@@ -93,21 +93,21 @@ class Dashboard():
             widget.controller = root.Label(fram, textvariable=widget.label_var)
             widget.controller.pack(fill=root.BOTH, expand=1)
 
-    def fram(self,widget): # Creating fram for widgets , thus setting width and height of widget
+    def fram(self,widget): # Creating frame for widgets , thus setting width and height of widget
 	fram = root.Frame(self.window, width=widget.width,height=widget.height)
-        fram.pack_propagate(0) # don't shrink
+        fram.pack_propagate(0)
         fram.pack()
         fram.place(x=widget.position_X,y=widget.position_Y) #positoin of widget within fram
         return fram
 
-    def fram1(self,W,H,X,Y):   #Creating fram for radiobuttons
+    def fram1(self,W,H,X,Y):   #Creating frame for radiobuttons
         fram = root.Frame(self.window, width=W,height=H)
-        fram.pack_propagate(0) # don't shrink
+        fram.pack_propagate(0)
         fram.pack()
         fram.place(x=X,y=Y)
         return fram
 
-# FOR Button Widget ........................
+# For Button Widget ........................
 
 class Create_button:
     controller = None
@@ -128,7 +128,7 @@ class Create_button:
             self.controller.callback(method)
         return True
         
-# FOR TextArea Widget ........................
+# For TextArea Widget ........................
 
 class Text_area:
     controller = None
@@ -147,13 +147,13 @@ class Text_area:
             self.controller.insert(root.INSERT,text)
         return True
 
-    def Get_text(self):
+    def Get_text(self):  # Initializing the TextArea
         if(self.controller == None):
             return self.text
         else:
             return self.controller.get(1.0, root.END)
 
-    def Append_text(self,text):
+    def Append_text(self,text): # For Appending the exisitng text in TextArea
 	print "narender"	
         if(self.controller == None):
 	    self.text = self.text + text
@@ -161,9 +161,11 @@ class Text_area:
             self.controller.insert(root.INSERT, text)
         return True                    
 
-    def Clear_area(self):
+    def Clear_area(self):	# For Clearing the TextArea
         self.controller.delete(1.0, root.END)
         return True
+
+
 #For TextBox Widget .........................
 
 class Text_field:
@@ -174,7 +176,7 @@ class Text_field:
         self.width = length
         self.height = breadth
 
-    def Set_text(self,text): #Setting text for textarea
+    def Set_text(self,text): # Setting text for textarea
         if(self.controller == None):
             self.text = text
         else:
@@ -182,17 +184,17 @@ class Text_field:
             self.controller.insert(root.INSERT,text)
         return True
 
-    def Get_text(self):          #Returning text which textarea is holding
+    def Get_text(self):      # Returning text which textarea is holding
         if(self.controller == None):
             return self.text
         else:
             return self.controller.get()
-
-    def Clear_field(self):
+ 
+    def Clear_field(self):  # Clearing the textField
         self.controller.delete(0,root.END)
         return True	
 
-#######################################################################
+#For TextBox Widget .........................
 
 class Password_field:
     def __init__(self,posX,posY,text="",length=250,breadth=25):
@@ -202,7 +204,7 @@ class Password_field:
         self.width = length
         self.height = breadth
 
-    def Set_text(self,text): #Setting text for textarea
+    def Set_text(self,text): #Setting text in password form for textarea
         if(self.controller == None):
             self.text = text
         else:
@@ -210,17 +212,17 @@ class Password_field:
             self.controller.insert(root.INSERT,text)
         return True
 
-    def Get_text(self):          #Returning text which textarea is holding
+    def Get_text(self):          # Returning text which textarea is holding
         if(self.controller == None):
             return self.text
         else:
             return self.controller.get()
 
-    def Clear_field(self):
+    def Clear_field(self):	# Clearing the textField
         self.controller.delete(0,root.END)
         return True	
 
-#######################################################################
+# For Label Text
 
 class Static_text:
     controller = None
@@ -234,7 +236,7 @@ class Static_text:
         self.width = length
         self.height = breadth
 
-    def Set_value(self,text):
+    def Set_value(self,text):    # Value to be set for Label
         if(self.controller == None):
             self.text = text
         else:
@@ -242,11 +244,7 @@ class Static_text:
         return True
 
 
-########################################################################
-
-
-
-# FOR CheckBox Widget ........................
+# For CheckBox Widget ........................
 
 class Check_box:
     controller = None
@@ -280,7 +278,7 @@ class Check_box:
 		
 
  
-# FOR RadioButton Widget ........................
+# For RadioButton Widget ........................
  
 class Radio_button:
     controller = None
@@ -309,14 +307,7 @@ class Radio_button:
                 return self.labels[i]
         return None
 
-
-    #def setButtonTrue(self,index): #Setting the value for radiobutton(marked or unmarked)
-     #   if(self.controller == None):
-      #      self.value=index
-       # else:
-        #    button_controller = self.controller[index]
-         #   button_controller.select()
-##############################################################################
+# For Drop Down List
 
 class Drop_list:
     controller = None
@@ -332,14 +323,14 @@ class Drop_list:
         self.height = breadth
         self.value = name1
 
-    def Get_value(self):
+    def Get_value(self):  # Getting the value from the drop down List
             if(self.controller == None):
                 return self.title
             else:
                 return self.list_var.get()
 
 
-#Spin Here and There
+#For Spin List
 
 class Spin_list:
     def __init__(self,posX,posY,length=100,breadth=25,minimum=0,maximum=100):
@@ -354,7 +345,5 @@ class Spin_list:
     def Get_value(self):	
 	return 6
 
-
-#########################################################################
-#Here Comes Main Part , DEMO Part........................................
+########################################################################################################
 

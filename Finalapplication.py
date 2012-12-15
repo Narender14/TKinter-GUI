@@ -2,11 +2,16 @@ import sys
 import tkinter as obj
 from getpass import getpass
 
+# A login.txt file will be created which will store the username and password of users.
+# Another file named with user name will be created that will store the contact details of the user.
+# A third file will be message.txt file that will store the messages along with sender ad recipient name. 
+
+
 
 if __name__=='__main__':
-	Name_string = raw_input("Enter the name\n")
-	Pass_string = getpass('Enter your password: ')
-	choice = raw_input("Enter the toolkit\n")
+	Name_string = raw_input("Enter the name\n")  #Getting user-name
+	Pass_string = getpass('Enter your password: ') #Getting password
+	choice = raw_input("Enter the toolkit\n")  # Enter any random value
 	
 	
 	name_field1 = ""
@@ -23,7 +28,7 @@ if __name__=='__main__':
 	def OnClickClear():
 		messages_area.Clear_area()
 
-
+#Function will write the contact informations like Name, phone No., gender, date of birth in the file corresponding to each user
 	def OnClickSave():	
 		global Name_string
 		global name_field
@@ -41,7 +46,6 @@ if __name__=='__main__':
 		spin_day1 = spin_day.Get_value()
 		print spin_day1
 		drop_month1 = drop_month.Get_value()
-		#drop_month.Set_value("January")
 		spin_year1 = spin_year.Get_value()
 		path = Name_string + ".txt"
 		Contact_file2 = open(path, 'a+')
@@ -54,7 +58,7 @@ if __name__=='__main__':
 		Contact_file2.close()
 		
 
-
+# Function to search the contact details either by name or by phone number from user contact list or file.
 	def OnClickSearch():
 		global Name_string
 		global byname_field
@@ -70,7 +74,6 @@ if __name__=='__main__':
 			
 		Search_path = Name_string + ".txt"
 		Search_file = open(Search_path, 'r')
-		#results_area.Clear_area()
 		results_area.Clear_area()
 		results_area.Append_text(byname_field1)
 		if(flag1 == 1):
@@ -104,7 +107,7 @@ if __name__=='__main__':
 						tag3 = 1
 		
 
-
+# User can Send message to the other user in his contact list. Message will be stored in a file with sender and recepient name.
 	def OnClickSend():
 		global send_name_field
 		global send_message_area
@@ -124,6 +127,8 @@ if __name__=='__main__':
 		Message_file2.close()
 
 	
+
+#Checking the validity of Username ad Password from fike LogIn.txt
 	def Check1():
 		
 		i = 0
@@ -152,25 +157,23 @@ if __name__=='__main__':
 						break
 					
 		if(res == 1):
-			#Pass_file.close() decide if we want to close it or not
 			Check2()
 		elif(res == 0 and tag == 0):
 			
 			Pass_file.write(Name_string + "\n")
 			Pass_file.write(Pass_string + "\n")
-			#Pass_file.close()
 			Check2()
 		elif(res == 0 and tag == 1):
 			print "Password Incorrect - Try Again"
 			sys.exit("Password Incorrect")
 	
 
+# Getting Message from the file message.txt
+
 	def Check2():
 		#------------------------------------------------------------------------------------------------
 		global frame
 		#------------------------------------------------------------------------------------------------
-		#Naveen's code would be present here
-		#retrieve the messages based on name
 		Message_file = open('messages.txt', 'a+r')
 		tag1 = 0
 		tag2 = 0
@@ -256,36 +259,28 @@ if __name__=='__main__':
 
 	clear_btn = obj.Create_button(170, 600, "Clear", 85, 25)						# Creating Submit Button
 	clear_btn.Click_listener(OnClickClear)
-	window.Add(clear_btn)								# Adding it to frame1
+	window.Add(clear_btn)						# Adding it to frame1
 
 
-	s_contacts = obj.Static_text(500, 25, text = "Search Contacts ---> ")			# Creating static text1
+	s_contacts = obj.Static_text(500, 25, text = "Search Contacts ---> ")	# Creating static text1
 	window.Add(s_contacts)
 
 	byname = obj.Static_text(480, 65, text = "By Name")
 	window.Add(byname)
-
-	#byphoneno = obj.Static_text(480, 105, text = "By Phone No")
-	#window.Add(byphoneno)
 	
 	select = obj.Static_text(890, 25, text = "Select")
 	window.Add(select)
 
 	byname_field = obj.Text_field( 605, 60)
 	window.Add(byname_field)
-	
-	#byphoneno_field = obj.Text_field(605, 100)
-	#window.Add(byphoneno_field)
 
 	check_byname = obj.Check_box(900, 60, "", 20, 20)		# Adding entries
-	window.Add(check_byname)								# Adding it to frame1		
+	window.Add(check_byname)				# Adding it to frame1		
+		
 
-	#check_byphoneno = obj.Check_box(900, 100, "" , 20, 20)		# Adding entries
-	#window.Add(check_byphoneno)								# Adding it to frame1		
-
-	search_btn = obj.Create_button(690, 160, "Search", 85, 25)						# Creating Submit Button
+	search_btn = obj.Create_button(690, 160, "Search", 85, 25)     # Creating Submit Button
 	search_btn.Click_listener(OnClickSearch)
-	window.Add(search_btn)								# Adding it to frame1
+	window.Add(search_btn)				# Adding it to frame1
 
 	results = obj.Static_text(500, 200, text = "Results --->")
 	window.Add(results)
@@ -308,10 +303,10 @@ if __name__=='__main__':
 	send_message_area = obj.Text_area( 605, 445, 270, 140)
 	window.Add(send_message_area)
 
-	send_btn = obj.Create_button(690, 600, "Send", 85, 25)						# Creating Submit Button
+	send_btn = obj.Create_button(690, 600, "Send", 85, 25)		# Creating Submit Button
 	send_btn.Click_listener(OnClickSend)
-	window.Add(send_btn)								# Adding it to frame1
+	window.Add(send_btn)					# Adding it to frame1
 	
 	Check1()	
 
-
+########################################################################################################
