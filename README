@@ -16,7 +16,7 @@ USAGE :
 				On running the finalapplication.py file, Username, Password and toolkit is asked. Choose any username and password but please remember it if you want to login next time as the same user. Type anything for toolkit option. After that a main window is created with several widgets. A user can then add contact details of its friend or can search or can message any friend.
 
 
-				 Login.txt, message.txt and a file corresponding to each user will be created that will store username - password, sender - receipient , and contact 	detail  of users.
+				 Login.txt, message.txt and a file corresponding to each user will be created that will store username - password, sender - receipient, and contact detail of users.
 
 
 
@@ -30,7 +30,8 @@ REQUIREMENT :
 RUN (for Linux) : 
 ------------------
 
-			Download the files "tkinter.py" and "finalapplication.py" into a directory.
+			Download the files "tkinter.py" and "finalapplication.py"
+			into a directory.
 
  			Run command : python finalapplicatin.py
 
