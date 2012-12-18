@@ -26,7 +26,7 @@ Login.txt, message.txt and a file corresponding to each user will be created tha
 REQUIREMENT :
 -------------
     You must have Python installed on your computer.
-    Tkinter is default toolkit so it will be on your computer once you installed python.
+    Tkinter is default toolkit so it will be on your computer once you installed python.  
  
 
 RUN (for Linux) : 
