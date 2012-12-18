@@ -41,8 +41,10 @@ For closing the application, simply close the window.
 
 CONTRIBUTION : 
 ---------------
-Please fork this repository and contribute back. It can be extended to further. 
-Any contribution is welcome. 
+Please fork this repository and contribute back. Any new idea for its extension is welcomed. 
+Any bug report, patch is also welcomed.
+
+A tutorial on how to contribute to github project is [HERE](https://help.github.com/articles/fork-a-repo/)
 
 
 
