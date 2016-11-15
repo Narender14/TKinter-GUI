@@ -36,7 +36,7 @@ Download the files "tkinter.py" and "finalapplication.py"	into a directory.
 
     Run command : **python finalapplicatin.py**
     
-For closing the application, simply close the window.
+For closing the application, simply close the window and the application will get closed.
 
 
 CONTRIBUTION : 
